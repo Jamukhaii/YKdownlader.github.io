@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YK Downloader | Çoklu Platform Video İndirici</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <i class="bi bi-cloud-download-fill"></i>
+      <span>YK DOWNLOADER</span>
+    </div>
+    <p class="tagline">YOUTUBE • INSTAGRAM • TIKTOK • X • FACEBOOK • REDDIT • 1000+ PLATFORM</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="card-header">
+        <div class="title-group">
+          <i class="bi bi-link-45deg"></i>
+          <h1>Video Linkleri</h1>
+        </div>
+        <div class="badge">ÇOKLU LİNK</div>
+      </div>
+      <div class="card-body">
+        <textarea id="links" spellcheck="false" placeholder="Her satıra bir link girin...&#10;&#10;https://www.youtube.com/watch?v=...&#10;https://www.instagram.com/reels/...&#10;https://www.tiktok.com/@user/video/..."></textarea>
+        <p class="muted">Hatalı linkler atlanarak diğerlerine devam edilir.</p>
+      </div>
+    </section>
+
+    <div class="grid-2">
+      <section class="card">
+        <div class="card-header">
+          <div class="title-group">
+            <i class="bi bi-sliders"></i>
+            <h2>Format & Kalite</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="group">
+            <span class="label">FORMAT</span>
+            <div class="radios">
+              <label class="radio">
+                <input type="radio" name="format" value="mp4" checked>
+                <span>MP4</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="format" value="mp3">
+                <span>MP3</span>
+              </label>
+            </div>
+          </div>
+          <div class="group">
+            <span class="label">KALİTE (MP4)</span>
+            <select id="quality">
+              <option value="auto">En Yüksek (Otomatik)</option>
+              <option value="1080">1080p</option>
+              <option value="720">720p</option>
+              <option value="480">480p</option>
+              <option value="360">360p</option>
+              <option value="240">240p</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <div class="title-group">
+            <i class="bi bi-play"></i>
+            <h2>Kontrol</h2>
+          </div>
+          <span class="pill" id="pill">BEKLEMEDE</span>
+        </div>
+        <div class="card-body actions">
+          <button class="btn gold" id="start">
+            <i class="bi bi-cloud-download"></i>
+            İNDİRMEYİ BAŞLAT
+          </button>
+          <button class="btn ghost" id="clear">
+            <i class="bi bi-trash"></i>
+            TEMİZLE
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <section class="card">
+      <div class="card-header">
+        <div class="title-group">
+          <i class="bi bi-activity"></i>
+          <h2>Anlık Durum</h2>
+        </div>
+      </div>
+      <div class="card-body status">
+        <div class="row">
+          <span>İşlenen</span>
+          <b id="done">0 / 0</b>
+        </div>
+        <div class="row">
+          <span>Başlık</span>
+          <b class="ell" id="title">-</b>
+        </div>
+        <div class="bar">
+          <div class="fill" id="fill"></div>
+        </div>
+        <div class="row mini">
+          <span>% <b id="pct">0</b></span>
+          <span>Hız <b id="spd">N/A</b></span>
+          <span>ETA <b id="eta">N/A</b></span>
+          <span>Durum <b id="st">Beklemede...</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <div class="title-group">
+          <i class="bi bi-terminal"></i>
+          <h2>Log</h2>
+        </div>
+      </div>
+      <div class="card-body log" id="log"></div>
+    </section>
+
+    <section class="card" id="errc" style="display:none">
+      <div class="card-header">
+        <div class="title-group">
+          <i class="bi bi-exclamation-triangle"></i>
+          <h2>Hatalar</h2>
+        </div>
+      </div>
+      <div class="card-body errs" id="errs"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>YK DOWNLOADER • yt-dlp Altyapısı</p>
+    <p class="sub">Dosyalar downloads/ klasörüne kaydedilir</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
